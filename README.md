@@ -42,23 +42,25 @@ SQLite was chosen as the database management system for this proposed solution d
 # Criteria B: Design
 
 ## System Diagram
-![jojojojojojo](https://user-images.githubusercontent.com/111751273/218300364-847958a7-0dfe-4322-96aa-054a088358a8.png)
-<i>Fig. 1</i> This is the system diagram for the proposed solution.
+![SystemDiagram](https://user-images.githubusercontent.com/112055140/224467199-91b2e028-3c59-4e94-975f-ad9bdb0c72af.jpg)
 
+<i>Fig. 1</i> This is the system diagram for the proposed solution.
 It serves as a visual representation of the system and its components, and their relationships to each other. As shown above, the application will run on Python and KivyMD. The application will have various inputs from the user, which will all be stored within a database using SQLite. All of this will be executed within the Pycharm application, which will then display the output on a screen.
 
 ## Wireframe Diagram 
-![project3wireframe](https://user-images.githubusercontent.com/111751273/222183981-e5c23a00-11df-4f00-8393-bb5c2cb1d2c7.jpg)
-<i>Fig. 2</i> This is the wireframe for the application. 
+![Wireframe Diagram](https://user-images.githubusercontent.com/112055140/224467201-3422a561-06cd-4b80-951b-5548b7796ad7.jpg)
 
+<i>Fig. 2</i> This is the wireframe for the application. 
 As showing above in Fig. 2, the wireframe details how the application will look. The wireframe also details the plan of how different screens will appear through different buttons. The arrows that extend from the button to the screen serve to show the user which screen will open when they press and release the button. However, with two exceptions, the 'Search Flight' screen and the 'Airport Map' screen both open a pop-up window when the user clicks on the 'Search' (Search Flight Screen) or 'Show Map' (Airport Flight Map Screen) button. The purpose of this wireframe diagram is to give a visual representation of the user interface design that outlines the structure and layout of the application.
 
 ## ER Diagram
-![projectERdiagram](https://user-images.githubusercontent.com/111751273/221607890-1596d013-bce7-429e-8da9-3bda8b66235d.jpg)
+![ERDiagram](https://user-images.githubusercontent.com/112055140/224467205-32d45dc4-d483-4cfe-8375-d80b91c071e4.jpg)
+
 <i>Fig. 3</i> This is the ER Diagram showing the two tables: users, allflights. 
 
 ## UML Diagram
-![project3uml (2)](https://user-images.githubusercontent.com/111751273/223038750-7f90bc97-38ce-4a5e-bd9c-57dc089c638d.jpeg)
+![UMLDiagram](https://user-images.githubusercontent.com/112055140/224467215-48ffd13d-b67a-4005-a974-73ca24678e59.png)
+
 <i>Fig. 4</i> This is the UML diagram for the application, which displays the classes and methods that were used in its development. The diagram includes two main parent classes: MDApp and MDScreen. All subclasses inherit methods and attributes from these parent classes, as indicated by the arrows in the diagram. 
 
 The database_worker class in the diagram provides methods for establishing a connection to a SQLite3 database, searching for information within the database, saving information to the database, and closing the connection to the database.
