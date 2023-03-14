@@ -66,20 +66,24 @@ As showing above in Fig. 2, the wireframe details how the application will look.
 The database_worker class in the diagram provides methods for establishing a connection to a SQLite3 database, searching for information within the database, saving information to the database, and closing the connection to the database.
 
 ## Flow Diagrams
-![project3flowchart1](https://user-images.githubusercontent.com/111751273/222959574-c2700376-0e36-4e39-9bf6-49b6e391d8d6.jpeg)
-<i>Fig. 5</i> This is the flow diagram that details the process of how the search method works. 
+![FlowDiagram1](https://user-images.githubusercontent.com/112055140/224905116-a3f14db6-fb27-43f1-b48b-661413f1b01f.jpg)
+
+<i>Fig. 5</i> This is the flow diagram that details the process of how the try_add method from AddKanjiScreen works. 
 
 This method is used to search for flight information in a database. It creates a table using the MDDataTable class and specifies the columns of the table. It then connects to a SQLite database using a database_worker class and runs a SQL query to search for flight information based on the flight number or date provided by the user. If data is found, it updates the table with the search results and displays it on the screen. If no data is found, it displays an error message using a pop-up dialog.
 
-![project3flowchart2 jpg](https://user-images.githubusercontent.com/111751273/222961252-2696019e-96c7-40d0-826f-06838853b379.jpeg)
-<i>Fig. 6</i> This is the flow diagram that details the process of how the add flight method works. 
+![FlowDiagram2](https://user-images.githubusercontent.com/112055140/224905145-2c9d069f-a942-49c0-b83a-556d1cba683d.jpg)
+
+<i>Fig. 6</i> This is the flow diagram that details the process of how the update method from DeleteKanjiScreen works. 
 
 This method is used to add flight information to a database. It first validates the input fields to ensure that they are not empty. If all the fields are valid, it connects to a SQLite database using the database_worker class and runs an SQL query to insert the flight information into the database. It then displays a pop-up message indicating that the flight has been successfully added to the database. Finally, it clears the input fields so that the user can add another flight.
 
-![project3flowchart3 jpg (1)](https://user-images.githubusercontent.com/111751273/223020533-453cc1e2-da9d-4d22-a47e-d57c31416998.jpeg)
-<i>Fig. 7</i> This is the flow diagram that details the process of how the delete method works.
+![FlowDiagram3](https://user-images.githubusercontent.com/112055140/224905175-9d04bec9-37fe-430b-a9b2-dca62bc911db.jpg)
+
+<i>Fig. 7</i> This is the flow diagram that details the process of how the save method from the DeleteKanjiScreen works.
 
 This is a method that is used to delete checked rows in a table. First, it gets the checked rows from the table. Then it connects to a SQLite database and loops through each checked row to execute a delete query for that particular row using the id field as a reference. After each row is deleted, an alert dialog is created and opened to confirm that the row has been successfully deleted. Finally, the database connection is closed and the table is updated to reflect the changes.
+
 ## Test Plan
 
 | Description | Test Type|  Input | Expected Output |
