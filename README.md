@@ -45,44 +45,48 @@ SQLite was chosen as the database management system for this proposed solution d
 ![SystemDiagram](https://user-images.githubusercontent.com/112055140/224467199-91b2e028-3c59-4e94-975f-ad9bdb0c72af.jpg)
 
 <i>Fig. 1</i> This is the system diagram for the proposed solution.
-It serves as a visual representation of the system and its components, and their relationships to each other. As shown above, the application will run on Python and KivyMD. The application will have various inputs from the user, which will all be stored within a database using SQLite. All of this will be executed within the Pycharm application, which will then display the output on a screen.
+
+This system diagram shown above is for the application proposed as the solution. It visually represents the system as well as its components. In general, it serves to clarify the relationships between the components, and making it easier to understand overall how it works. The application will use KanjiApp.py from Python and KanjiApp.kv from KivyMD for the GUI and functions, while we use kanji_app.db from SQLite to store any user inputs. This will all be able to be executed through the PyCharm application, and will be displayed using a screen. 
 
 ## Wireframe Diagram 
 ![Wireframe Diagram](https://user-images.githubusercontent.com/112055140/224467201-3422a561-06cd-4b80-951b-5548b7796ad7.jpg)
 
 <i>Fig. 2</i> This is the wireframe for the application. 
-As showing above in Fig. 2, the wireframe details how the application will look. The wireframe also details the plan of how different screens will appear through different buttons. The arrows that extend from the button to the screen serve to show the user which screen will open when they press and release the button. However, with two exceptions, the 'Search Flight' screen and the 'Airport Map' screen both open a pop-up window when the user clicks on the 'Search' (Search Flight Screen) or 'Show Map' (Airport Flight Map Screen) button. The purpose of this wireframe diagram is to give a visual representation of the user interface design that outlines the structure and layout of the application.
+
+The wireframe diagram above is a visual representation of the application GUI structure. It clarifies the functions of each buttons within the GUI, ignoring the python functions. It serves to provide a broad overview of the application as well as a thorough and in-depth understanding of the structure of its GUI. The arrows extending from buttons will represent what screen the button will take you to. For instance, the REGISTRATION button in the LoginScreen will take you to the RegistrationScreen whereas the LOG IN button if the same LoginScreen will take you to the HomeScreen(when correct username and password are entered). 
 
 ## ER Diagram
 ![ERDiagram](https://user-images.githubusercontent.com/112055140/224467205-32d45dc4-d483-4cfe-8375-d80b91c071e4.jpg)
 
-<i>Fig. 3</i> This is the ER Diagram showing the two tables: users, allflights. 
+<i>Fig. 3</i> This is the ER Diagram showing the two tables: users, kanji_database.
+
+The users table of the kanji_app.db database of the application will record the registered users for the application. It will record the id of the user in an integer format, the username as a string format, the email as a string format, and finally the password as a string format. However, the password is hashed before recorded into the users table for security reasons. Therefore, neither the developers or data breachers will have access to the original password of the user. The kanji_database table of the same database includes id in an integer format, and user_id, kanji, hiragana, katakana, and meaning as string format. 
 
 ## UML Diagram
 ![UMLDiagram](https://user-images.githubusercontent.com/112055140/224467215-48ffd13d-b67a-4005-a974-73ca24678e59.png)
 
-<i>Fig. 4</i> This is the UML diagram for the application, which displays the classes and methods that were used in its development. The diagram includes two main parent classes: MDApp and MDScreen. All subclasses inherit methods and attributes from these parent classes, as indicated by the arrows in the diagram. 
+<i>Fig. 4</i> This is the UML Diagram showing the classes and methods.
 
-The database_worker class in the diagram provides methods for establishing a connection to a SQLite3 database, searching for information within the database, saving information to the database, and closing the connection to the database.
+The UML diagram shown above provides informations regarding the classes and methods used throughout the development of the app. Parenting classes are MDApp, MDScreen, MDExpansionPanelThreeLine, and finally the MDBoxLayout. Each classes contains methods in each screen necessary for the application to function. Finally, the database_handler contains methods required for the application to connect and modify the kanji_app.db SQLite database. 
 
 ## Flow Diagrams
 ![FlowDiagram1](https://user-images.githubusercontent.com/112055140/224905116-a3f14db6-fb27-43f1-b48b-661413f1b01f.jpg)
 
 <i>Fig. 5</i> This is the flow diagram that details the process of how the try_add method from AddKanjiScreen works. 
 
-This method is used to search for flight information in a database. It creates a table using the MDDataTable class and specifies the columns of the table. It then connects to a SQLite database using a database_worker class and runs a SQL query to search for flight information based on the flight number or date provided by the user. If data is found, it updates the table with the search results and displays it on the screen. If no data is found, it displays an error message using a pop-up dialog.
+This method is used to append the kanji, hiragana, katakana, and meaning inputs from the user into the kanji_database table of the kanji_app.db database. The method first converts the input to local variables, as well as taking the user_id of the user logged in, to make the data exclusive to that specific user. Next, it opens access to the database with the database_handler, and append the local variables with a specially generated query named “add_kanji.” Finally, it runs the query, closes the database, notifies toe user that the Kanji has been added, and empties all the inputs for the next input. And that is the end of the method. 
 
 ![FlowDiagram2](https://user-images.githubusercontent.com/112055140/224905145-2c9d069f-a942-49c0-b83a-556d1cba683d.jpg)
 
 <i>Fig. 6</i> This is the flow diagram that details the process of how the update method from DeleteKanjiScreen works. 
 
-This method is used to add flight information to a database. It first validates the input fields to ensure that they are not empty. If all the fields are valid, it connects to a SQLite database using the database_worker class and runs an SQL query to insert the flight information into the database. It then displays a pop-up message indicating that the flight has been successfully added to the database. Finally, it clears the input fields so that the user can add another flight.
+This method is used to update a table that lists all the datas from kanji_database table in kanji_app,db database. The method will first take the user_id of the user logged in. It will then open the kanji_app.db database, and SELECT all datas that are specific to the user_id of the user that is logged in. Then, it will append all the results into a local variable “results” and close the database. Following that, it will create a list named “data,” and for every data in the results variable, it will take the kanji, hiragana, katakana variables and convert them into a Japanese font, and add it to a new list variable created earlier, “data.” Then, it will update the table accordingly. This way, all of the datas shown on the table is 1) user exclusive, and 2) converted to a Japanese font, hence preventing any display errors.
 
 ![FlowDiagram3](https://user-images.githubusercontent.com/112055140/224905175-9d04bec9-37fe-430b-a9b2-dca62bc911db.jpg)
 
 <i>Fig. 7</i> This is the flow diagram that details the process of how the save method from the DeleteKanjiScreen works.
 
-This is a method that is used to delete checked rows in a table. First, it gets the checked rows from the table. Then it connects to a SQLite database and loops through each checked row to execute a delete query for that particular row using the id field as a reference. After each row is deleted, an alert dialog is created and opened to confirm that the row has been successfully deleted. Finally, the database connection is closed and the table is updated to reflect the changes.
+This method is used to delete any data from the kanji_database table from the kanji_app.db database. The way it works is that, on a table shown on the screen, the user can click on the data that they want to delete. This will be recorded as checked_rows, and will be used later to select the datas to delete in the uniquely generated query. The method will then open the database, and go through a for look that for every data in checked_rows, it will repeat the process of identifying the ID of the selected data, and using that to identify what data to delete from the database in a query, and running the query. This will be repeated until there are no more datas left in the checked_rows, and then will finally move on to close the database. It will then update the table so that the change is reflected upon without the user having to run the whole program again.
 
 ## Test Plan
 
