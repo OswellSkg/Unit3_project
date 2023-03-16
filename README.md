@@ -108,150 +108,162 @@ This method is used to delete any data from the kanji_database table from the ka
 
 
 ## Record of Tasks
-| Task No | Planned Action| Planned Outcome | Time estimate | Target completion date | Criterion |
-|---------|---------------|------------------|---------------|------------------------|-----------|
-1	|	Meet with the client	|	Talk with the client to dicuss the problems they are facing and brainstorm solutions to create a plan to help the client resolve the problems.	|	15 minutes	|	2/9/2023	|	A
-2	|	Brainstorm and write the problem definition	|	A clear problem definition of what the client is facing.	|	15 minutes	|	2/9/2023	|	A
-3	|	Rationale for Proposed Solution	|	A clear justification that suits the client and developer.	|	15 minutes	|	2/10/2023	|	A
-4	|	"Brainstorm and write down success criterias	"	|	A clear success criteria that suits the client and resolves the problem	|	20 minutes	|	2/10/2023	|	A
-5	|	Brainstorm and write down a design statement for the client        	|	A clear design statement that suits the need of the client	|	15 minutes	|	2/10/2023	|	A
-6	|	Write the rationale for proposed solution 	|	A clear justification that suits the client and developer.	|	30 minutes	|	2/10/2023	|	A
-7	|	Create system diagram        	|	To have a clear idea of the hardware and software requirements for the proposed solution	|	45 minutes	|	2/10/2023	|	B
-8	|	Draw a wire frame and write an explanation of it	|	Have a clear wire frame that accurately represents and describes the application and have a brief explanation	|	1 hour	|	2/10/2023	|	B
-9	|	Follow up meeting with client	|	Present success criteria to client to get the approval	|	20 minutes	|	2/13/2023	|	A
-10	|	Create a login and registration system	|	To create a program that allows the user to register and login to the application using a username and password they set up	|	1 hour	|	2/13/2023	|	C
-11	|	Create password encryption	|	Using 'sha256' to encrypt password and check password in login and registration	|	45 minutes	|	2/13/2023	|	C
-12	|	Create a password policy	|	Have a policy where when the user creates an account, their password must follow certain requirements such as having a minimum of 8 characters	|	15 minutes	|	2/25/2023	|	C
-13	|	Create table for all flights	|	To have a table inside the database that includes all flight data	|	15 minutes	|	2/25/2023	|	C
-14	|	Create an add flight page	|	Have a page that allows the user to add flights into the 'allflights' table within the database	|	15 minutes	|	2/23/2023	|	C
-15	|	Program the add flight system	|	Have a fully functional program that allows the user to enter all flight information and save it. The data entered should be stored into the database and shown in the table with all flight information	|	2 hours	|	2/27/2023	|	C
-16	|	Add time picker to add flight system	|	Implement the time picker from KivyMD library into the add flight system. Program should display a clock that allows the user to select time.	|	45 minutes	|	2/27/2023	|	C
-17	|	Add date picker to add flight system	|	Implement the date picker from KivyMD library into the add flight system. Program should display a calendar for the user to select the date.	|	45 minutes	|	2/27/2023	|	C
-18	|	Add checkboxes to add flight system	|	Implement the usage of checkboxes for value selection. Have checkboxes for different pieces of flight information for the user to select from.	|	1 hour	|	2/27/2023	|	C
-19	|	Create search system for specific flights	|	Allow the user to search for specific flights by flight number and date.	|	1 hour	|	2/28/2023	|	C
-20	|	Create airport map page	|	Have a page that shows a map of the airport and the current date's flights at their gate	|	2 hours	|	3/1/2023	|	C
-21	|	Create flight history page	|	Have a page that shows all values stored within the database	|	1 hour	|	3/1/2023	|	C
-22	|	Validate all buttons and their actions	|	Making sure that each button executes the expected task and is accurately displayed within the application	|	1 hour	|	3/1/2023	|	C
-23	|	Create table displaying the results of searched flights	|	Retrieving requested data from the database of all flights, and displaying them in an organized table 	|	1 hour	|	3/1/2023	|	C
-24	|	Follow up meeting with client	|	Showing the application to the client and to ask for their opinion on the applications current progress	|	10 minutes	|	3/1/2023	|	A
-25	|	Finish designing the map of the airport	|	When the program for the airport map is run, it show display a map of the airport with all the terminals and gates labeled 	|	2 hours	|	3/1/2023	|	C
-26	|	Connect database to the airport map and plot flights on the map	|	When the program for the airport map is run, all flights and their flight numbers for the days date will be plotted onto the map accordingly to their gate	|	1 hour	|	3/1/2023	|	C
-27	|	Create the program to calculate all flight statistics	|	All flight statistics will be outputted as percentages and grouped into three categories: on time, delayed, cancelled. 	|	30 minutes	|	3/1/2023	|	C
-28	|	Create flight statistics page	|	Have a page that allows the user to see statistics of flights, grouped by flight status	|	10 minutes	|	3/1/2023	|	C
-29	|	Write a program that allows the user to search for flights based off flight number or date	|	The user will be able to enter flight numbers or dates to search for flights. Requested information from the user will be displayed onto a table	|	1 hour 30 minutes	|	3/1/2023	|	C
-30	|	Create search flight page	|	Have a page that allows the user to search for flights.	|	10 minutes	|	3/1/2023	|	C
-31	|	Create UML Diagram and write a brief description 	|	Have a clear UML Diagram that accurately shows the different classes and methods used with a brief explanation	|	30 minutes	|	3/2/2023	|	B
-32	|	Write the test plans	|	Procedures one should take to test the program and the expected outcome of each test is recorded 	|	45 minutes	|	3/2/2023	|	B
-33	|	Create flow diagrams and write brief explanations for each       	|	Have accurate flow diagrams for different parts of the porgram with brief explanations	|	1 hour	|	3/5/2023	|	B
-34	|	Present final product to client	|	Meet with client to deliver the final product of the application	|	20 minutes	|	3/5/2023	|	A
-35	|	Finish Criteria C	|	Write the descriptions of the code and the detail of the techniques that were used `	|	2 hours	|	3/6/2023	|	C
-36	|	Finish video for Criteria D	|	Video evidence of all the success criterias functioning and working within the developed applicaiton	|	25 minutes	|	3/9/2023	|	D 
+https://docs.google.com/document/d/1xnl3_qt5ToP3yCtgorY-RFfB_ZXItlj07jwOs4aSo-8/edit?usp=sharing
 
 # Criteria C: Development
+
+## Existing Tools
+Python
+KivyMD
+SQLite
+PyCharm
+ChatGPT
+Font Book
+RGB
+
 ## Techniques Used
-1. Object Oriented Programming (OOP): Classes, Inheritance 
-2. SQLite Database
-3. Variables
-4. For loops
-5. If statements
-6. Plotting graphs
+1. For loops
+2. Else statements
+3. If statements
+4. Variables
+5. Database Connection
+6. Classes
 7. Functions
+8. Object Oriented Programming (OOP): Classes, Inheritance 
 
 ## Development of User Interface Using KivyMD
 
 ### Screen Manager
 ```.kv
 ScreenManager:
-
     LoginScreen:
         name: "LoginScreen"
+
+    RegistrationScreen:
+        name: "RegistrationScreen"
+
+    HomeScreen:
+        name: "HomeScreen"
+
+    AddKanjiScreen:
+        name:"AddKanjiScreen"
+
+    DeleteKanjiScreen:
+        name: "DeleteKanjiScreen"
+
+    KanjiList:
+        name: "KanjiList"
 ```
-The client requires an application that allows them to record and store flight information. Developing a user interface is best fit for thier need as it is easier to use and visually appealing.
+The client requires an application that allows them to record kanjis accordingly to their kanji learning experiences. The application will therefore consist of 6 screens of two Login and Registration, one Home Screen, and Three screens for Add, Kanji, and View functions. 
+The KV code above brings together all 6 screens under one unbrella of a ScreenManager. Each screen can be given a nickname. 
 
-The KV code snippet above shows a ScreenManager with a single screen called "LoginScreen". To create additional screens for the flight information application, I followed a similar structure by defining each screen with a unique name and id within the ScreenManager. For example, I created a signup screen with a name of "SignupScreen". I repeated this process for each screen in the application, such as the "Homepage" screen, "AddFlight" screen, "FlightHistory" screen, "SearchFlight" screen, "AirportMap" screen, and "FlightStatistics" screen.
-
-Each screen is defined using a separate KV code block that specifies the layout and widgets for that screen. For example, the "AddFlight" screen might include text input fields for the user to enter flight information, while the "FlightHistory" screen might display a list of previously recorded flights.
-
-By using a ScreenManager and defining each screen as a separate widget, I can easily switch between screens and manage the application flow. For example, when the user logs in or signs up, I can switch from the "LoginScreen" or "SignupScreen" to the "Homepage" screen. Similarly, I can navigate from the "Homepage" screen to the "AddFlight" screen when the user wants to record a new flight, or to the "FlightHistory" screen to view past flights. This approach allows for a more organized and user-friendly interface, and can help improve the overall user experience.
-
-### General Application Screen
+### General Screen Graphical User Interface
 ```.kv
 <LoginScreen>:
-    size: 500, 500
+    size: 2000, 1000
     FitImage:
-        source: "background.jpg"
-        
+        source: "J6HCBQ4.gif"
     MDCard:
-        size_hint: .5, .9
-        elevation: 2
-        orientation: "vertical"
-        pos_hint: {"center_x": .5, "center_y": .5}
-        padding: dp(50)
-        md_bg_color: "#F4F4F6"
+        size_hint: .7,.7
+        pos_hint: {"center_x": 0.5, "center_y": 0.5}
+        orientation: 'vertical'
+        md_bg_color: 1, 1, 1, 0.5
 ```
-This is a Kivy language code block defining the visual layout of a screen named "LoginScreen". This is an example of one of many screens in the application. MDCard is a component in the KivyMD library that represents a rectangular card with rounded corners, which can contain other widgets inside it. I use this as the general basic set up of each screen in the application, so all screens had the same set up and background image, as my client wanted a professional and clean aesthetic look.
+In the kivy program above, the general layout and design is defined. In this example, the Login Screen has a size of 2000 x 1000 pixel, and has a background of an image named J6HCBQ4.gif. Within the screen, there is a Card the size of 70% x 70% of the entire screen, positioned vertically and horizontally centered. It's orientation is vertical, meaning whatever comes inside the card will be layed in order vertically. The color of the Card is white, with 0.5 transparency. This overall achieves a very professional finish of the design. This design is universal across the applications, and is applied to every single screen available witin the application. 
 
-### MDFillRoundFlatIconButton
+### MDBoxLayout
 ```.kv
-MDFillRoundFlatIconButton:
-    icon: "airplane-takeoff"
-    text: "Add Flight"
-    on_release: app.root.current = 'AddFlight'
-    md_bg_color: "#8dbcd6"
-    pos_hint: {"center_x": .5, "center_y": .5}
+MDBoxLayout:
+    orientation: "vertical"
+    size_hint:1,.25
 ```
-The KV code above shows one of the homepage buttons that will direct the user to the defined screen in ScreenManager. This kind of button used in the homepage is simple and visually appealing, fitting the client's needs for professionality and clean aesthetic appearance. This is one of the buttons I had decided to use, to add variety in the shapes of buttons I had. The other button I used was MDRaisedButton, which is basically the same as the button shown in the code above, but it just does not have an icon or circular shape.
+In every screen, the MDBoxLayout plays a significant role in creating a cleanly designed and organized screen. The MDBoxLayout was used to distribute the portions of the screen in a decided porportion. For instance, in the example above, the BoxLayout takes up the whole horizontal space times 25% of the vertical space of its parent variable. This way, whatever comes inside the MDBoxLayout is limited within the 25% of the vertical space, hence achieving to organize the entire screen in this manner. Several of the MDBoxLayout is used to fill up all of the space that its parent specifies. 
 
 ### MDLabel
 ```.kv
 MDLabel:
-    text: "Welcome to Air Traffic Control"
-    underline: True
-    font_style: "H5"
-    size_hint: 1, .1
-    halign: "center"
-    pos_hint: {"center_x": .5, "center_y": .5}
+    text:""
 ```
-This is the KV code for an MDLabel. MDLabels are text labels on the screen that serve as indicators to guide the user on where they are in the application. In this case, I used the MDLabel as the title for my homepage screen, which allows the user to know that they have entered the air traffic control application.
+In any MDBoxLayout, in order to ensure that the design is clean and organized, MDLabel was used to fillin unnecessary gaps. For instance, in the case if there are two MDTextField's(which I will introduce later) that is horizontally aligned, and we want to space it equally amongst the screen, we can put MDLabel before the first MDTextField, one in-between the two MDTextField's, and one after the second MDTextField. With this, The MDLabel will automatically take up as much space as it can in the specified parts, hence bringing the two MDTextFields horizontally together with balanced spacing, of three equal spaces. This MDLabel has been used all across the screen to ensure quality design.
+
+### MDRaisedButton
+```.kv
+MDRaisedButton:
+    text: "LOG IN"
+    font_size: 20
+    pos_hint: {"center_y":.5}
+    on_press: root.try_login()
+    text_color: "#FFFFFF"  # white text color
+    md_bg_color: "#2B2D2F"  # use dark gray as background
+    line_color: "#FFFFFF"  # white line color
+    elevation_normal: 10  # add shadow effect
+```
+The program above is an MDRaisedButton, a button that can be connected to the python file for any python-programmed functions through the on_press attribute. In the example, there is a text "LOG IN" inside the button with the font size of 20. The Button is horizontically centered, with its text color being white, background being gray, and with white border lines and a shadow effect. When pressed, it will activate the try_login() function of the respective screen. This design of MDRaisedButton is applied for every single button available in the screen, hence centralizing function as well as the design of the application. 
 
 ### MDTextField
 ```.kv
 MDTextField:
-    id: destination
-    hint_text: "Please enter flight destination"
-    icon_left: "airplane-takeoff"
+    id: uname_in
+    hint_text: "username"
+    icon_right: "account"
     helper_text_mode: "on_error"
-    helper_text: "Please enter flight destination"
+    helper_text:""
+    size_hint_x: None
+    width: 750
+    font_size: 25
+    pos_hint: {"center_x": 0.5}
+    mode: "rectangle"
 ```
-This is an example of an MDTextField I used for my client's application. MDTextFields are text fields on the applications page that allows the user to input information through their keyboard. This is an important aspect to the user interface for my client's application as it will allow them to input information they want into the program. When I was programming the MDTextFields, I realized that there is a high chance for the user to make mistakes when typing information into the MDTextField. As shown above, I have helper text, so when the user forgets to input a piece of information, an error will appear in red helper text to guide the user.
-
-### MDCheckbox
-```.py
-MDCheckbox:
-    id: terminal1
-    group: 'terminals' #this group is so that all the checkboxes are linked and only one can be selected
-    size_hint: None, None
-    size: dp(48), dp(48)
-    active: True
-    on_active: root.checkbox_click(self, self.active, "T1")
-    pos_hint: {"center_y":.5}
-```
-This is a KivyMD widget that creates a checkbox. This is an example of how I used MDCheckbox for the selection of certain values. The checkbox has an ID of "terminal1", which can be used to reference the widget in the Python code. The "group" property is set to "terminals", which means that this checkbox is part of a group of checkboxes with the same group name. Only one checkbox in the group can be selected at a time. I use this for other parts of the application such as for selecting the gate number and flight status.
+The program above is an MDTextField, in which clients are able to input information on their keyboard. In the given example, the id of the MDTextField is uname_in which is an abbreviation of username input. it has a hint_text of "username" that slightly displays in the MDTextField to give the user an idea of what they are supposed to input. The MDTextField also has an human designed icon at the right side of it, named "account" in the KivyMD icons library. Furthermore, this textfield has a helper_text that activates when error, and the error as well as the helper text will be defined on the python file, hence enhancing flexibility of the helper_text. The width of the text field isset to 750, the font size to 25, and is vertically centered within its parent. All MDTextFields in the application is centralized with this design. 
 
 
 ## Development of Application Using Python
 
-### Database Handler
-#### Accessing Information Inside of the Database
+### Login and Registration System
+#### The Login System with verification process
 ```.py
-def search(self, query):  # Function for searching inside the db
-    result = self.cursor.execute(query).fetchall()  # Run a query and fetch the result
-    return result  # Return the found result
-```
-This is a method called search that takes a query parameter as input. The method executes the query using a cursor object and fetches all the results using the fetchall() method. The result is stored in the result variable and then returned to the user. This method can be used to search for records in a database table by executing a SQL query provided as the query parameter. Its usage allows me to acquire query results across areas of development throughout the application necessary for my solution and my client's needs. 
+    def try_login(self):
 
-### Login System
-#### User Credential Verification
+        username = self.ids.uname_in.text.strip()
+        password = self.ids.passwd_in.text.strip()
+
+        if not username or not password:
+            if not username:
+                self.ids.uname_in.error = True
+                self.ids.uname_in.helper_text = "Please fill in this Field"
+                self.ids.error_text.text = "*Please fill all fields"
+
+            if not password:
+                self.ids.passwd_in.error = True
+                self.ids.passwd_in.helper_text = "Please fill in this Field"
+                self.ids.error_text.text = "*Please fill all fields"
+
+        else:
+            db = database_handler("kanji_app.db")
+            query = f"SELECT * FROM users WHERE username = '{username}'"
+            search_result = db.search(query)
+            if len(search_result) == 1:
+                id, email, uname, hashed = search_result[0]
+                # hashed = result[0][2]
+                if check_password(password, hashed):
+                    logging.info("Login Successful: %s", username)
+                    self.user_id = id
+                    self.parent.current = "HomeScreen"
+                    self.ids.uname_in.text = ""
+                    self.ids.passwd_in.text = ""
+                    self.ids.error_text.text = ""
+                    db.close()
+                else:
+                    self.ids.error_text.text = "*Password is incorrect"
+                    logging.error("Login Unsuccessful: %s", "Incorrect Password")
+            else:
+                self.ids.error_text.text = "*User not found"
+                logging.error("Login Unsuccessful: %s", "User not found")
+```
+This is a method that takes in the user inputs of username and password, and determine whether there is an account that matches the input or not. If there is, it will allow the user to move on to the Home Screen, and if not, it will become an error. Firstly, it determines whether there is properly an input or not in the first place. If either username or password lacks error, it will activate the error in the MDTextField that will display the error_text, and defines the error_text as "*Please fill all fields.*" This way, the user will be easily notified of the error, and will be able to fix it accordingly. If there is properly an input, the program will then open thedatabase of the application and compare the inputs with the datas in the users table of the database, where all the users credentials are stored. The hapassword will be converted to a hash and compared to the data, while the username will be compared directly. If any data matches with the input, all MDTextField's will be emptied and the user will be allowd into the Home Screen. Otherwise, if the password is incorrect, the error_text will show up saying "Password is incorrect." Furthermore, if a user is not found in the first place, an error_text will also show up saying "User not found."
+
+
+#### Registration System with verification process
 ```.py
 # Check if password matches
 if len(result) == 1:
