@@ -108,11 +108,13 @@ https://docs.google.com/document/d/1xnl3_qt5ToP3yCtgorY-RFfB_ZXItlj07jwOs4aSo-8/
 ## Existing Tools
 Python
 KivyMD
-SQLite
+SQLite3
 PyCharm
 ChatGPT
 Font Book
 RGB
+Re
+Logging
 
 ## Techniques Used
 1. For loops
@@ -213,7 +215,8 @@ The program above is an MDTextField, in which clients are able to input informat
 ## Development of Application Using Python
 
 ### Login and Registration System
-#### The Login System with verification process
+
+#### The Login System with verification process and policies
 ```.py
     def try_login(self):
 
@@ -256,204 +259,173 @@ The program above is an MDTextField, in which clients are able to input informat
 This is a method that takes in the user inputs of username and password, and determine whether there is an account that matches the input or not. If there is, it will allow the user to move on to the Home Screen, and if not, it will become an error. Firstly, it determines whether there is properly an input or not in the first place. If either username or password lacks error, it will activate the error in the MDTextField that will display the error_text, and defines the error_text as "*Please fill all fields.*" This way, the user will be easily notified of the error, and will be able to fix it accordingly. If there is properly an input, the program will then open thedatabase of the application and compare the inputs with the datas in the users table of the database, where all the users credentials are stored. The hapassword will be converted to a hash and compared to the data, while the username will be compared directly. If any data matches with the input, all MDTextField's will be emptied and the user will be allowd into the Home Screen. Otherwise, if the password is incorrect, the error_text will show up saying "Password is incorrect." Furthermore, if a user is not found in the first place, an error_text will also show up saying "User not found."
 
 
-#### Registration System with verification process
+#### Registration System with verification methods as well as policies
 ```.py
-# Check if password matches
-if len(result) == 1:
-    id, email, hashed, uname = result[0]
-    if check_password(user_password=passwd, hashed_password=hashed):
-        self.parent.current = "Homepage"
-        self.ids.uname.text = ""
-        self.ids.passwd.text = ""
-    else:
-        print("Passwords don't match")
+class RegistrationScreen(MDScreen):
+    def try_register(self):
+        # Get the values of the input fields
+        username = self.ids.username_registration.text.strip()
+        email = self.ids.email_registration.text.strip()
+        password = self.ids.password_registration.text.strip()
+        password_confirm = self.ids.password_confirm_registration.text.strip()
+
+        # Check if any of the input fields are empty
+        if not username or not email or not password or not password_confirm:
+            self.ids.error_text.text = "*Please fill all fields"
+
+        # Check if the password and confirmation password do not match
+        elif password != password_confirm:
+            self.ids.password_confirm_registration.error = True
+            self.ids.error_text.text = "*Password and confirmation password do not match"
+        elif not re.match(r"^[^@]+@([a-zA-Z0-9]+[.])+(com|edu|net|org|gov|mil|biz|info|mobi|name|aero|asia|jobs|museum|coop|jp|[a-zA-Z]{2})$", email):
+            self.ids.email_registration.error = True
+            self.ids.error_text.text = "*Invalid email address"
+        elif database_handler("kanji_app.db").search(f"SELECT * FROM users WHERE username='{username}' OR email='{email}'"):
+            # Username or email already exists
+            self.ids.username_registration.error = True
+            self.ids.email_registration.error = True
+            self.ids.error_text.text = "*Username or email already exists"
+        else:
+            # Register the user
+            db = database_handler("kanji_app.db")
+            hash = encrypt_password(password)
+            query = f"INSERT into users (email, password, username) values('{email}','{hash}','{username}')"
+            db.run_save(query)
+            db.close()
+            logging.info("Registration Completed: %s", f"Credentials are UN:{username}, EM:{email}, and PW:{hash}.")
+            self.parent.current = "LoginScreen"
 ```
-This is the program used for the login system. As shown in the code above, this program works by checking if anything with a length of one or greater is returned. Then after that, the code verifies if the inputted password matches with the password stored in the database under the username entered. This meets the first criteria of having a login system. I was able to apply this method to other parts of the code such as the register and search flight system to check if data inputted exists or not.
+This is a method that registers a user with their provided credentials. As shown above, in this method, if/elif/else statements are used often to implement verification steps. The method first takes the input of the user, and translates into a local variable. After that, the method ensures that all fields necessary are filled, and or else it will provide an error text "*Please fill all fields*." Following that procedure, the method checks if the provided password and the password confirmation matches. This is to ensure that the password that the user provided is authentic without any unintended mistakes such as a typo. And then the method also checks if an email provided is properly anemail address. It does this with the re import that provides us with match functions that makes the process easier. And then, it also checks if the provided username or email already exists in the database to avoid overlapping accounts with the same credentials. If not it moves on to register the user. 
 
-#### Pop Up Message
+### Add&Delete System
+
+
+#### Add function
 ```.py
-# If username does not exist, a pop up message will appear
-if len(result) == 0:
-    dialog = MDDialog(title="User not found",
-                      text=f"Username '{self.ids.uname.text}' does not have an account.")
-    dialog.open()
-    self.ids.uname.text = ""
-    self.ids.passwd.text = ""
+def try_add(self):
+    kanji = self.ids.add_kanji_input.text.strip()
+    hiragana = self.ids.add_hiragana_input.text.strip()
+    katakana = self.ids.add_katakana_input.text.strip()
+    meaning = self.ids.add_meaning_input.text.strip()
+    user_id = self.manager.get_screen("LoginScreen").user_id
+
+    db = database_handler("kanji_app.db")
+    add_kanji = f"INSERT into kanji_database (user_id, kanji, hiragana, katakana, meaning) values ('{user_id}','{kanji}','{hiragana}','{katakana}','{meaning}')"
+    db.run_save(add_kanji)
+    db.close()
+
+    self.ids.add_kanji_text.text = "*Kanji Added"
+    self.ids.add_kanji_input.text = ""
+    self.ids.add_hiragana_input.text = ""
+    self.ids.add_katakana_input.text = ""
+    self.ids.add_meaning_input.text = ""
 ```
+In the function above, the user input is translated into a local variable and appended into the kanji_database. This function is introduced in the AddKanjiScreen, and is to add the user's input into the database for future references. After taking the user input and translating it into a local variable, it opens up the database, creates a query to add all the variables to the database, executes it, and closes the database. It then empties all the inputs to make it easier for the user to enter their next kanji inputs. 
 
-When programming the login system, I came across the challenge of how I was going to show two different error messages, due to the fact that helper texts can only be used once for each MDTextField. I was able solve this by discovering MDDialog (pop up message) on the KivyMD website[2]. As shown in the code above, I display pop up message when a username entered does not exist. This increases both the professionality and quality of the application for my client. I was able to use this method in other parts of the application such as the register, add flight, and search flight systems.
 
-### Registration System
 
-#### Password Policy
+#### Python List
 ```.py
-pattern = r'^(?=.*\d)(?=.*[a-z])(?=.*[!@#$%^&*()_+]).{8,}$'
-# Check if the password matches the pattern
-if not re.match(pattern, passwd):
-    self.ids.passwd.error = True
-    return
-```
-
-
-This is the password policy I use to increase the security of the application. It requires the user to input a password that is at least 8 characters long, contains at least 1 digit, 1 lowercase letter, and 1 special character. This fits my client's need for increased protection of the stored data, as passwords that meet these criteria have a lower likelihood of being guessed or cracked. 
-
-I found it challenging at first trying to figure out how to create a secure password policy for my application. I knew that I needed to require users to create strong passwords, but I wasn't sure what criteria to use or how to implement them. I also wanted to make sure that my policy was up-to-date and followed best practices for password security. After doing some research online, I came across Stack Overflow, which is a great resource for developers and students like myself. I found a post on Stack Overflow that explained how to use regular expressions to validate password strength, and it provided some example code that I could use as a starting point for my own implementation [15].
-
-To implement this policy, I used the "re" module from the Python standard library, which provides support for regular expressions. Regular expressions are a powerful tool for text processing and pattern matching, and in this case, I used them to define a pattern that checks for the required password criteria. The pattern I used is: r'^(?=.*\d)(?=.*[a-z])(?=.*[!@#$%^&*()_+]).{8,}$'
-
-This pattern consists of several parts, including positive lookahead assertions that check for the presence of at least one digit, one lowercase letter, and one special character, and a minimum length of 8 characters. I then used the "re.match()" function to check if a given password matches this pattern. If the password does not meet the criteria, the user is prompted to input a stronger password. This policy helps to increase the security of the application and protect the sensitive data stored within it.
-
-### Add Flight System
-#### Missing Value Validation
-```.py
-# Flight number validation
-if self.ids.flight_number.text == "":
-    self.ids.flight_number.error = True
-```
-This piece of code is used for validating the user input in the add flights page. It ensures that the user has typed something into the textfield, and if not, it raises and error. This is an important aspect of the application to my client as there can not be missing values for flight information. By using this method of validation, I reduce the risk for mistakes and missing pieces of information. I use this throughout the application where there are textfields that are required to be filled out.
-
-#### Time Picker
-```.py
-# Time picker
-def show_time_picker(self):
-    from datetime import datetime
-
-    # Define default time
-    default_time = datetime.strptime("12:00", '%H:%M').time()
-
-    time_dialog = MDTimePicker(
-        primary_color="#8dbcd6",
-        accent_color = "#f4f4f4",
-        text_button_color = "#f4f4f4",
-    )
-    # Set default Time
-    time_dialog.set_time(default_time)
-    time_dialog.bind(on_cancel=self.on_cancel, time=self.get_time, on_save=self.on_save_time)
-    time_dialog.open()
-```
-MDTimePicker is a time picker widget in the KivyMD library that allows users to easily select a time. The code snippet above shows how I integrated MDTimePicker into my application to allow users to input time. By using MDTimePicker, users can easily select the time they want in a format that is easy to understand. This reduces the possibility of user mistakes and increases efficiency. As you can see in the code, the "open_picker" method opens the time picker, and the "on_save" method saves the time selected in the correct format "hh:mm". Overall, the integration of MDTimePicker has made the time input process much easier and more efficient for the user.
-
-
-#### Date Picker
-```.py
-# Date calendar picker
-    def date(self):
-        date_dialog = MDDatePicker()
-        date_dialog.bind(on_save=self.on_save)
-        date_dialog.open()
-
-    def on_save(self, instance, value, date_range):
-        self.selected_date = value
-        value = value.strftime("%m/%d/%Y")
-        self.ids.date.text = f"{value}"
-```
-The piece of code above shows how I allowed the user to input date. The application is sensitive to the date inputted, as it needs to be in the exact format it is asking for. This is because later on the database will match the date inputted to the date stored to retrieve stored information. This was a challenge as I needed the date in a specific format. However, after doing some research, I found that using the date picker from KivyMD library was the best option, as it makes it easier to choose a specific format of the date I wanted [2]. As you can see in the code, the "date" method opens the calander, and the "on_save" method saves the date selected in the correct format "mm/dd/yyy". I also use this method in the search system of the application to increase efficieny and reduce the possibilities of user mistakes.
-
-#### Checkboxes
-```.py
-# Checkboxes
-def checkbox_click(self, checkbox, value, terminal):
-    if value:  # if the check is true
-        self.selected_location = terminal
-        print(terminal)
-        self.ids.terminal.text = f"{terminal}"
-```
-
-To decrease the possibility of human errors, I decided to use checkboxes to select certain values such as the terminal. Instead of having the user have to type in which terminal the flight is in, they can just select the right one using a checkbox. The method shown in the code above handles the click event of a checkbox. The method takes three arguments, checkbox, value, and terminal. If the value of the checkbox is true (meaning it has been checked), the method sets the value of the selected_location attribute to the terminal value. It then sets the text of the terminal to the selected terminal, and when the user adds the flight, the selected terminal is inputted into the database. I use this more than once, for other values such as gate numbers and the statuses of flights, and in other parts of the application such as the login and registration system.
-
-
-#### Insert Query
-```.py
-db = database_worker("unit3project.db")
-query = f"INSERT into allflights(flight_number, destination, date, flight_schedule, terminal, gate_number, status) values('{flight_number}', '{destination}', '{date}', '{flight_schedule}', '{terminal}', '{gate_number}', '{status}')"
-db.run_save(query)
-db.close()
-```
-The is the program used to add flights into the database. My client requested to have a system that allows the them to enter flight information and store them. In order to do this, I used executed a query in the program that inserts flight information into a table inside the database (allflights table).
-
-This code inserts data into a database table called "allflights" using the information provided by the variables flight_number, destination, date, flight_schedule, terminal, gate_number, and status. The database connection is created using the database_worker function and the unit3project.db database file. The SQL query is constructed using the query variable by inserting the values from the variables. Then, the run_save method is used to execute the SQL query and save the changes to the database. Finally, the database connection is closed using the close method.This system fulfills the second criteria, by having the application allow the user to input all attributes (flight number, destination, flight schedule, terminal, and gate number) and store them into the database. I also used this insert query method in other parts of the program such as the register system.
-
-
-### Flight History System
-#### Data Table
-```.py
-# Displays the table on the screen
 def on_pre_enter(self, *args):
+    # before the srceen is created, this code is run
     self.data_table = MDDataTable(
-        size_hint = (.9, .8),
-        pos_hint = {"center_x":.5, "center_y":.5},
-        use_pagination = True,
-        check = True,
-        column_data = [("ID", 40), ("Flight Number", 50), ("Destination", 40),
-                       ("Date", 45), ("Flight Schedule", 30), ("Terminal", 30), ("Gate Number", 30), ("Status", 30)]
+        size_hint=(.5, .56),
+        pos_hint={"center_x": .41, "center_y": .445},
+        use_pagination=True,
+        check=True,
+        rows_num=10,
+        pagination_menu_pos="center",
+        # title of the columns
+        column_data=[("ID", 35),
+                     ("Kanji", 35),
+                     ("Hiragana", 35),
+                     ("Katakana", 35)
+                     ]
     )
-    self.add_widget(self.data_table)
+    self.data_table.theme_cls.theme_style = "Dark"
+    # add the functions for events of the mouse
+    # self.data_table.bind(on_row_press=self.row_pressed)
+    self.data_table.bind(on_check_press=self.check_pressed)
+    self.add_widget(self.data_table)  # add table to the GUI
     self.update()
 ```
-The piece of code above shows how I am able to display a table with data onto the screen. I use a select query before this, to retrieve all the necessary data, then display it onto the table using the program above. I used this method for other parts of the application such as the search flight system. However, while programming the table to show data, I did come across the challenge of being able to close the table. After attempting to use a pop up window, I decided that using a button to close the table screen was the better option, as it was more user friendly and visually appealing. 
 
-### Search Flight System
-#### Select Query
+This program above creates a list for the user with kanji datas exclusive to the user. The list includes columns as follows: ID, Kanji, Hiragana, and Katakana. Checks are available, and pagination is also available to enhance user-friendliness by removing an endless list. The theme is adjusted to dark to accomodate with the overall style. This list will provide a list to all kanji datas, and the user will be able to check on the data that they would like to get rid of. The data of the kanji clicked will be sent to a different method that is connected to a button which executes a generated query for deletion. 
+
+
+#### Delete Function - Connected to a button
 ```.py
-db = database_worker("unit3project.db")
-query = f"SELECT * FROM allflights WHERE flight_number = '{self.ids.flight_number.text}' or date = '{self.ids.date.text}'"
-print(query)
-data = db.search(query)
-db.close()
+  def save(self):
+      checked_rows = self.data_table.get_row_checks()
+      db = database_handler("kanji_app.db")
+      for row in checked_rows:
+          id = row[0]  # assuming the primary key column is the first column
+          query = f"DELETE FROM kanji_database WHERE id={id}"
+          db.run_save(query)
+      db.close()
+      self.update()
 ```
-The program above details how the application will access the database and search for the flight the user is looking for. I executed a query in the program that selects specific data from a specifc table within the database.
 
-This code queries a database table called allflights using the database_worker function and the unit3project.db database file. The SQL query is constructed using the f-string formatting and searches for all the rows in the table where the flight_number is equal to the text entered in an element with an id of flight_number or the date is equal to the text entered in an element with an id of date. The search method of the database_worker class is used to execute the SQL query and retrieve the matching data from the database. The retrieved data is stored in the data variable.
+In the function above, the rows that were checked by the user in the Python list introduced above are put into a local variable, "checked_rows." The function, then, opens the database, and for every row in "checked_rows," it creates an original query using the ID of the data to delete it from the database. It then runs the query. This is repeated until there are no more rows left in "checked_rows," and the database is closed. 
 
-I use this select query method in other parts of the program such as the login system. The program takes the username inputted by the user to try and select a match within the users table to see if the user exists. This fulfills the third criteria by allowing the user to search for flights by date and flight number to locate specific flights. Further, I use this select query method in other parts of the program such as the login, airport map, and flight statistics system. 
 
-### Airport Flight Map System
-#### Plotting Airport Map
+#### Updating the List
 ```.py
-# Add terminal
-ax.add_patch(plt.Rectangle((1, 1), 2, 2, facecolor='#C0C0C0', edgecolor='black'))
-ax.text(2, 3.2, 'Terminal 1', ha='center', va='center', fontsize=12, fontweight='bold')
+    def update(self):
+        user_id = self.manager.get_screen("LoginScreen").user_id
+        # read database and update table
+        db = database_handler("kanji_app.db")
+        query = f"SELECT id, kanji, hiragana, katakana from kanji_database where user_id={user_id}"
+        results = db.search(query)
+        db.close()
+        data = []
+        for result in results:
+            id = result[0]
+            kanji = f"[font=Japanese.ttc]{result[1]}[/font]"
+            hiragana = f"[font=Japanese.ttc]{result[2]}[/font]"
+            katakana = f"[font=Japanese.ttc]{result[3]}[/font]"
+            data.append([id, kanji, hiragana, katakana])
+        self.data_table.update_row_data(None, data)
 ```
-This code above is a part of the program I created in plotting the map of the airport. I used the matplotlib library in python to help me create a map of the airport on a graph [13]. The code above shows how I was able to plot the terminal. I repeated the same method to plot the other terminal and runways for the rest of the airport map. This meets my client's request to have a page that accesses a map of the airport. 
 
-#### Plotting Flight Numbers
+The function above is one that collects exclusive data that belongs to the user that is logged in, and put it into the pre-made python list. This function is used after anything is deleted from the database by the user to keep the list up-to-date, as well as when the user opens the DeleteKanjiScreen. In this function, a query to select the ID, Kanji, Hiragana, and Katakana from the kanji_database that belongs to the exclusive user_id is generated, and executed. After that, kanjim hiragana, and katakana data values are translated to a Japanese font, as default Python does not accept fonts from other languages. Then, the data is appeneded into the rows of the list. 
+
+### Kanji List
+
 ```.py
-# Retrieve today's flight
-today = date.today()
-today = today.strftime("%m/%d/%Y")
-db = database_worker('unit3project.db')
-query = f"SELECT flight_number, gate_number FROM allflights where date = '{today}'"
-data = db.search(query)
-db.close()
+def on_pre_enter(self):
+    user_id = self.manager.get_screen("LoginScreen").user_id
+    db = database_handler("kanji_app.db")
+    query = f"SELECT kanji, hiragana, katakana, meaning FROM kanji_database WHERE user_id={user_id}"
+    results = db.search(query)
+    db.close()
 
-# Add the flight number to the gate on the graph
-for flight in data:
-    flight_number = flight[0]
-    gate_number = flight[1]
-    gate_pos = gates['Gate ' + gate_number]
-    if gate_number in ['A1', 'A3', 'B1', 'B3']:
-        ax.text(gate_pos[0] - 1, gate_pos[1], flight_number, ha='center', va='center', fontsize=10,
-                fontweight='bold', color='red')
-    else:
-        ax.text(gate_pos[0] + 1, gate_pos[1], flight_number, ha='center', va='center', fontsize=10,
-                fontweight='bold', color='red')
+    for result in results:
+        kanji = f"[font=Japanese.ttc]{result[0]}[/font]"
+        hiragana = f"[font=Japanese.ttc]{result[1]}[/font]"
+        katakana = f"[font=Japanese.ttc]{result[2]}[/font]"
+        meaning = f"[font=Japanese.ttc]{result[3]}[/font]"
+
+        panel = MDExpansionPanel(
+            icon=md_icons['book-education'],
+            content=Content(),
+            panel_cls=MDExpansionPanelThreeLine(
+                text=kanji,
+                secondary_text=hiragana,
+                tertiary_text=katakana
+            )
+        )
+
+        panel.content.add_widget(
+            TwoLineIconListItem(
+                text="Meaning",
+                secondary_text=meaning
+            )
+        )
+
+        self.ids.box.add_widget(panel)
 ```
-The program above shows how the application displays a labelled map of the airport with all the flights at their assigned gates. This was one of the biggest challenges I had when programming map. I had to meet my client's need of plotting the location of all flights at their gate. This was because I needed to gather all the flights for the current day's date. I was able to achieve this by using the datetime library [12]. After I was able to retrieve only the current day's flights, I could plot the flight numbers at their assigned terminals and gates using if statements and lists, as shown in line 5 in the code above.   
-
-### Flight Statistics System
-#### Calculating Flight Statistics
-```.py
-# On time, delayed, and cancelled values are queried from table in database
-total_flights = ontime[0][0] + delayed[0][0] + cancelled[0][0]
-percent_ontime = ontime[0][0] / total_flights * 100
-percent_delayed = delayed[0][0] / total_flights * 100
-percent_cancelled = cancelled[0][0] / total_flights * 100
-```
-The program above details how I was able to calculate the statistics for all flights. My client wanted a page that would show the different statistics of flight statuses; for all flights on time, delayed, and cancelled. I chose to represent each statistic in percentage form, as it would give my client an easy way to compare the different flight statistics.
-
-# Criteria D: Functionality
-## Video Showcasing the Functionality of the Application
-Video link: https://youtu.be/q8vF37bSPy0
+The function above is used to create a Kanji List with dropdown function to hide/show meanings of the Kanji. It is the ultimate purpose that the whole application exists, and this list assists the user to learn kanji more efficiently with this dropdown function. In this function, all the kanji, hiragana, katakana, and meaning values of the data that exclusively belongs to the user logged in is selected. And then, it is transferred into Japanese font as it is appended into a list. However, initially, only the Kanji, hiragana, and katakana are appended into the list. In order to achieve the drop down, the meaning is appended into the list in the form of a different wiedget. This achieves to provide the user with a new level of experience. 
 
 
 # Citations
