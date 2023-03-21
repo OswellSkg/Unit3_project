@@ -457,21 +457,19 @@ Video link: https://youtu.be/q8vF37bSPy0
 
 
 # Citations
-1. Flight Schedule Screen Turned on · Free Stock Photo. https://www.pexels.com/photo/flight-schedule-screen-turned-on-2833379/, Accessed Feb 9
-2. “Welcome to KIVYMD's Documentation.” KivyMD 1.1.1 Documentation, Accessed Feburary 9
-3. “SQL Tutorial.” SQL Tutorial, Accessed Feburary 9
-4. Sanyal, Sayantani. 10 Reasons Why Python Is One Of The Best Programming Languages. Accessed Feburary 10, 2023
-5. Advantages and disadvantages of python - how it is dominating Programming World. DataFlair. Accessed Feburary 10, 2023
-6. "Kivy vs Flutter." Educba, n.d., https://www.educba.com/kivy-vs-flutter/. Accessed Feburary 10, 2023
-7.  "Building a Simple Application using KivyMD in Python." GeeksforGeeks, 17 Feb. 2021, https://www.geeksforgeeks.org/building-a-simple-application-using-kivymd-in-python/, Accessed Feb 10, 2023
-8. "Kivy vs PyQt." Educba, n.d., https://www.educba.com/kivy-vs-pyqt/. Accessed Feburary 10, 2023
-9. Gomathy, Kavya. "5 Reasons to Use SQLite, the Tiny Giant for Your Next Project." Medium, The Startup, 4 Jan. 2022, https://medium.com/swlh/5-reasons-to-use-sqlite-the-tiny-giant-for-your-next-project-a6bc384b2df4. Accessed Feburary 10, 2023
-10. Yegulalp, Serdar. "Why You Should Use SQLite." InfoWorld, IDG Communications, Inc., 13 Feb. 2019, https://www.infoworld.com/article/3331923/why-you-should-use-sqlite.html. Accessed Feburary 10, 2023
-11. "SQLite Advantages and Disadvantages." javatpoint, n.d., https://www.javatpoint.com/sqlite-advantages-and-disadvantages. Accessed Feburary 10, 2023
-12. Python Software Foundation. “datetime — Basic Date and Time Types.” Python 3 Documentation, 2021, https://docs.python.org/3/library/datetime.html. Accessed March 2, 2023
-13. "Matplotlib." Matplotlib, https://matplotlib.org/., Accessed March 2, 2023
-14. ChatGPT. OpenAI, 2023, https://openai.com/. Accessed March 2, 2023
-15. Stack Overflow. "Validation of a Password - Python." Stack Overflow, 14 Dec. 2016, https://stackoverflow.com/questions/41117733/validation-of-a-password-python. Accessed March 5, 2023
+1. OpenAI, https://openai.com/. Accessed 21 March 2023.
+2. “Apple Keyboard PNG.” PNG Mart, 21 May 2016, https://www.pngmart.com/image/964. Accessed 21 March 2023.
+3. “Apple Mac Computer Screen PNG Transparent Background, Free Download #39887 - FreeIconsPNG.” Freeiconspng, https://www.freeiconspng.com/img/39887. Accessed 21 March 2023.
+4. “grayscale photo of man sitting on chair in front of table while writing photo – Free Japan Image on Unsplash.” Unsplash, 9 November 2017, https://unsplash.com/photos/PveJaE410_w. Accessed 21 March 2023.
+5. “Kivy vs Flutter | Learn the Key Differences between Kivy and Flutter.” eduCBA, https://www.educba.com/kivy-vs-flutter/. Accessed 21 March 2023.
+6. Malik, Ajay. “How Python Is Different From Other Languages.” C# Corner, 6 March 2020, https://www.c-sharpcorner.com/article/how-python-is-different-from-other-languages/. Accessed 21 March 2023.
+7. “Oracle vs SQLite | What are the differences?” StackShare, https://stackshare.io/stackups/oracle-vs-sqlite. Accessed 21 March 2023.
+8. “Python: 7 Important Reasons Why You Should Use Python | by Mindfire Solutions.” Medium, 3 October 2017, https://medium.com/@mindfiresolutions.usa/python-7-important-reasons-why-you-should-use-python-5801a98a0d0b. Accessed 21 March 2023.
+9. “TIOBE Index.” TIOBE, https://www.tiobe.com/tiobe-index/. Accessed 21 March 2023.
+10. “Wallpapers Kanji.” Wallpaper Cave, https://wallpapercave.com/wallpaper-kanji. Accessed 21 March 2023.
+11. “What is SQLite? And When to Use It?” Simplilearn, 16 February 2023, https://www.simplilearn.com/tutorials/sql-tutorial/what-is-sqlite. Accessed 21 March 2023.
+12. “Which Python GUI library should you use in 2023?” Python GUIs, 24 July 2022, https://www.pythonguis.com/faq/which-python-gui-library/. Accessed 21 March 2023.
+13. Yegulalp, Serdar. “Why you should use SQLite.” InfoWorld, 13 February 2019, https://www.infoworld.com/article/3331923/why-you-should-use-sqlite.html. Accessed 21 March 2023.
 
 
 # Appendix
