@@ -444,15 +444,3 @@ The function above is used to create a Kanji List with dropdown function to hide
 13. Yegulalp, Serdar. “Why you should use SQLite.” InfoWorld, 13 February 2019, https://www.infoworld.com/article/3331923/why-you-should-use-sqlite.html. Accessed 21 March 2023.
 
 
-# Appendix
-
-## Evidence of Consultation
-
-### Client approval of proposed success critereas
-<img width="1001" alt="Screen Shot 2023-03-06 at 11 19 48 AM" src="https://user-images.githubusercontent.com/111751273/223004760-b79bb2c4-7aa5-4be0-9025-7550eeb5233c.png">
-
-### Client's review of application during development process
-<img width="1173" alt="Screen Shot 2023-03-01 at 12 12 44 PM" src="https://user-images.githubusercontent.com/111751273/222035637-e178d390-664c-4789-93bd-48b542e8c634.png">
-
-### Client's review of final product
-<img width="1165" alt="Screen Shot 2023-03-05 at 10 34 02 PM" src="https://user-images.githubusercontent.com/111751273/222963697-2049e75d-386d-4b28-b9ff-bf0c1a78d266.png">
